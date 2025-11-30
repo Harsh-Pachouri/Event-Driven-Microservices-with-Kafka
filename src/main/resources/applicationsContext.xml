@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userConfigBean" class="org.example.my_spring_boot_project_1.bean.UserConfig">
+        <property name="name" value="John Doe"/>
+        <property name="className" value="ExampleClass"/>
+    </bean>
+
+    <bean id="userService" class="org.example.my_spring_boot_project_1.bean.UserService">
+        <constructor-arg ref="UserConfigBean" />
+    </bean>
+    <bean id="orderService" class="org.example.my_spring_boot_project_1.bean.orderService" factory-method = "createInstance">
+        <constructor-arg ref="UserConfigBean"/>
+        <constructor-arg ref="UserService"/>
+    </bean>
+
+</beans>
+
+
+
